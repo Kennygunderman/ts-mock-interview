@@ -2,8 +2,7 @@
 
 ## Overview
 
-This codebase is for scheduling a ping pong tournament at work. You are given a partially implemented TypeScript module that should handle tournament scheduling and standings calculation.
-
+You’ve been put in charge of organizing and scheduling a ping pong tournament for your coworkers. You’re given a partially implemented TypeScript module that’s supposed to handle match scheduling and calculate player standings. The problem is that the module is buggy and only partially works. Your job is to find and fix the issues, complete the missing logic, and get all tests to pass.
 ## Requirements
 
 The implementation should:
