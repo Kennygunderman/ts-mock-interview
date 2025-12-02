@@ -1,5 +1,5 @@
 import { generateRoundRobin } from "../src/tournament";
-import { createMatchId, calculateStandings } from "../src/utils";
+import { createMatchId, calculateStandings, calculateStandingsWithTiebreaker } from "../src/utils";
 import { Player, Match } from "../src/types";
 
 describe("Tournament Scheduling", () => {
@@ -101,5 +101,87 @@ describe("Tournament Scheduling", () => {
     const standings = calculateStandings(matches);
     expect(standings.length).toBe(0);
   });
+
+
+
+  // Bonus if time
+  // test("calculateStandingsWithTiebreaker breaks ties using head-to-head results", () => {
+  //   return;
+  //
+  //   // Scenario: p1 and p2 both have 2 wins, 1 loss
+  //   // p1 beat p2 in their head-to-head match, so p1 should rank higher
+  //   const matches: Match[] = [
+  //     {
+  //       id: "m1",
+  //       playerA: players[0], // p1
+  //       playerB: players[1], // p2
+  //       bestOf: 3,
+  //       winnerId: "p1", // p1 beats p2
+  //     },
+  //     {
+  //       id: "m2",
+  //       playerA: players[0], // p1
+  //       playerB: players[2], // p3
+  //       bestOf: 3,
+  //       winnerId: "p1", // p1 beats p3
+  //     },
+  //     {
+  //       id: "m3",
+  //       playerA: players[0], // p1
+  //       playerB: players[3], // p4
+  //       bestOf: 3,
+  //       winnerId: "p4", // p4 beats p1
+  //     },
+  //     {
+  //       id: "m4",
+  //       playerA: players[1], // p2
+  //       playerB: players[2], // p3
+  //       bestOf: 3,
+  //       winnerId: "p2", // p2 beats p3
+  //     },
+  //     {
+  //       id: "m5",
+  //       playerA: players[1], // p2
+  //       playerB: players[3], // p4
+  //       bestOf: 3,
+  //       winnerId: "p2", // p2 beats p4
+  //     },
+  //     {
+  //       id: "m6",
+  //       playerA: players[2], // p3
+  //       playerB: players[3], // p4
+  //       bestOf: 3,
+  //       winnerId: "p4", // p4 beats p3
+  //     },
+  //   ];
+  //
+  //   // Final records:
+  //   // p1: 2 wins, 1 loss (beat p2, p3; lost to p4)
+  //   // p2: 2 wins, 1 loss (beat p3, p4; lost to p1)
+  //   // p4: 2 wins, 1 loss (beat p1, p3; lost to p2)
+  //   // p3: 0 wins, 3 losses
+  //
+  //   const standings = calculateStandingsWithTiebreaker(matches);
+  //
+  //   // p1 and p2 are tied (2-1), but p1 beat p2 head-to-head, so p1 should be first
+  //   // p4 also has 2-1, but lost to p2, so should be ranked after p2
+  //   // Expected order: p1, p2, p4, p3
+  //
+  //   expect(standings[0].playerId).toBe("p1");
+  //   expect(standings[0].wins).toBe(2);
+  //   expect(standings[0].losses).toBe(1);
+  //
+  //   expect(standings[1].playerId).toBe("p2");
+  //   expect(standings[1].wins).toBe(2);
+  //   expect(standings[1].losses).toBe(1);
+  //
+  //   expect(standings[2].playerId).toBe("p4");
+  //   expect(standings[2].wins).toBe(2);
+  //   expect(standings[2].losses).toBe(1);
+  //
+  //   expect(standings[3].playerId).toBe("p3");
+  //   expect(standings[3].wins).toBe(0);
+  //   expect(standings[3].losses).toBe(3);
+  // });
 });
 

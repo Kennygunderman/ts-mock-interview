@@ -50,3 +50,20 @@ export function calculateStandings(matches: Match[]): Standing[] {
   return Array.from(standingsMap.values());
 }
 
+/**
+ * Calculates standings and sorts them with tiebreaker rules.
+ * Standings are sorted by:
+ * 1. Wins (descending)
+ * 2. Losses (ascending)
+ * 3. Head-to-head: If two players have the same wins and losses,
+ *    the player who won their direct match should be ranked higher.
+ *
+ * If players are tied and haven't played each other, maintain their relative order.
+ */
+export function calculateStandingsWithTiebreaker(matches: Match[]): Standing[] {
+  const standings = calculateStandings(matches);
+
+  // Sort by wins (descending), then losses (ascending)
+  // TODO: implement head-to-head tiebreaker for players with same wins/losses
+  return standings;
+}

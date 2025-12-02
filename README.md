@@ -22,6 +22,8 @@ You must:
 3. Prefer fixing implementation rather than changing tests, unless the test clearly contradicts the written requirements.
 4. Avoid rewriting everything from scratch. You should patch what is there.
 
+**Bonus Challenge:** Once you've fixed the main bugs, there's an additional test for head-to-head tiebreakers in tournament standings. If two players have the same win-loss record, the player who won their direct match should be ranked higher. See if you can implement this!
+
 ## Getting Started
 
 1. Install dependencies:
